@@ -7907,12 +7907,16 @@
                 }
             }
 
-            // Stay within floor and ceiling
+            // Handle options for floor, ceiling, softMin and softMax
             if (isNumber(options.floor)) {
                 axis.min = mathMax(axis.min, options.floor);
+            } else if (isNumber(options.softMin)) {
+                axis.min = Math.min(axis.min, options.softMin);
             }
             if (isNumber(options.ceiling)) {
                 axis.max = mathMin(axis.max, options.ceiling);
+            } else if (isNumber(options.softMax)) {
+                axis.max = Math.max(axis.max, options.softMax);
             }
 
             // When the threshold is soft, adjust the extreme value only if
